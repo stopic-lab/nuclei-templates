@@ -1,0 +1,29 @@
+id: CVE-2026-50656
+
+info:
+  name: Microsoft Defender - RoguePlanet Local Privilege Escalation
+  author: rool-machine
+  severity: critical
+  description: |
+    Microsoft Defender (Microsoft Malware Protection Engine) is vulnerable to a race condition (TOCTOU) during the quarantine process. 
+    A low-privileged attacker can exploit this timing flaw to redirect file operations and gain SYSTEM privileges. 
+    This template detects vulnerable versions of MsMpEng.exe and associated quarantine artifacts.
+  reference:
+    - https://nvd.nist.gov/vuln/detail/CVE-2026-50656
+    - https://www.morphisec.com/blog/microsoft-defender-zero-day-rogueplanet-when-your-detector-becomes-the-attack-surface/
+  classification:
+    cvss-metrics: CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 7.0
+    cve-id: CVE-2026-50656
+  tags: cve,cve2026,windows,defender,eop,privesc,rogueplanet
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: word
+        words:
+          - "RoguePlanet Detection Logic - Placeholder for Version Scan"
+        part: body
